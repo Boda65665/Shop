@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New person</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/}" th:object="${user}">
+
+    <label for="password">Enter kod: </label>
+    <input type="text" th:field="*{email_confimation}" id="age"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Age Error</div>
+    <br/>
+    <label for="email">Enter email: </label>
+
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+    <div th:text="${error}" style="color:red"/>
+
+    <input type="submit" value="Create!"/>
+</form>
+
+</body>
+</html>
