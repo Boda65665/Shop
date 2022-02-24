@@ -1,10 +1,10 @@
 package ru.shop.com.Models;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class User {
-    public static int idUser;
     public User(){
 
     }
@@ -15,10 +15,47 @@ public class User {
     private String password;
     @Email(message = "No valid email")
     private String email;
-    public User(String login, String password, String email) {
+
+    private int kod_email_confimation;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
+
+    private String email_confimation;
+
+    public int getKod_email_confimation() {
+        return kod_email_confimation;
+    }
+
+    public void setKodEmailConfimation(int kod_email_confimation) {
+        this.kod_email_confimation = kod_email_confimation;
+    }
+
+    public String getEmailConfimation() {
+        return email_confimation;
+    }
+
+    public void setEmailConfimation(String email_confimation) {
+        this.email_confimation = email_confimation;
+    }
+
+
+    public User(String login, String password, String email,String email_confimation,int id,int kod_email_confimation) {
         this.login = login;
         this.password = password;
         this.email = email;
+        this.email_confimation = email_confimation;
+        this.id = id;
+        this.kod_email_confimation = kod_email_confimation;
+
+
     }
 
 

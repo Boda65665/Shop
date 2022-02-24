@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import ru.shop.com.Mappers.UserMapper;
 import ru.shop.com.Models.User;
 
 import java.util.List;
@@ -20,12 +21,15 @@ public class UserDAO{
         this.jdbcTemplate = jdbcTemplate;
     }
     public static void new_user(@NotNull User user,int id) {
-        jdbcTemplate.update("INSERT INTO users VALUES(?, ?, ?, ?)", user.getLogin(), user.getPassword(),
-                user.getEmail(),id);
+        jdbcTemplate.update("INSERT INTO users VALUES(?, ?, ?, ?, ?, ?)", user.getLogin(), user.getPassword(),
+                user.getEmail(),1234567890,id,"hello");
+    }
+    public void update(int id, User updatedPerson) {
+        jdbcTemplate.update("UPDATE users SET login=?, password=?, email=?, email_confimation=?,kod_email_confimation=? WHERE id=?", updatedPerson.getLogin(),
+                updatedPerson.getPassword(), updatedPerson.getEmail(),updatedPerson.getEmailConfimation(),updatedPerson.getKod_email_confimation(), id);
     }
     public static User user_search(String email){
-            return jdbcTemplate.query("SELECT * FROM users WHERE email=?", new Object[]{email}, new BeanPropertyRowMapper<>(User.class))
-                    .stream().findAny().orElse(null);
+            return jdbcTemplate.query("SELECT * FROM users WHERE email=?", new Object[]{email},new UserMapper()).stream().findAny().orElse(null);
         }
 
 
