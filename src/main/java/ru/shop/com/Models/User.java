@@ -8,6 +8,12 @@ public class User {
     public User(){
 
     }
+
+
+
+    double balance = 0.0;
+    double rating = 0.0;
+    int sales = 0;
     @Size(min = 5, max = 10,message = "Input symbol 5 and 10")
     private String login;
     @Size(min = 5, max = 10,message = "Input symbol 5 and 10")
@@ -45,16 +51,42 @@ public class User {
     public void setEmailConfimation(String email_confimation) {
         this.email_confimation = email_confimation;
     }
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public int getSales() {
+        return sales;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
+    }
 
 
-    public User(String login, String password, String email,String email_confimation,int id,int kod_email_confimation) {
+
+    public User(double balance, double rating, int sales,String login, String password, String email, String email_confimation, int id, int kod_email_confimation) {
         this.login = login;
         this.password = password;
         this.email = email;
         this.email_confimation = email_confimation;
         this.id = id;
         this.kod_email_confimation = kod_email_confimation;
-
+        this.balance = balance;
+        this.rating = rating;
+        this.sales = sales;
 
     }
 

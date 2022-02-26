@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <title>Profile</title>
+
+</head>
+Привет мир
+<body>
+Привет мир
+
+Informations:
+<br>
+Username: <span th:text="${user.getLogin()}"/>
+<br>
+Sales: <span th:text="${user.getSales()}"/>
+<br>
+Ratings: <span th:text="${user.getRating()}"/>
+<br>
+<a th:href="${href_goods}">Goods</a>
+<br>
+<a th:href="${href_reviews}">Reviews</a>
+
+
+</body>
+</html>

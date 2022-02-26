@@ -1,10 +1,17 @@
 package ru.shop.com.Config;
 
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.GenericFilterBean;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
+import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class MySpringMVCDispetherInititaliser extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
@@ -24,12 +31,20 @@ public class MySpringMVCDispetherInititaliser extends AbstractAnnotationConfigDi
 
     @Override
     public void onStartup(ServletContext aServletContext) throws ServletException {
+
         super.onStartup(aServletContext);
         registerHiddenFieldFilter(aServletContext);
-    }
+        }
+
 
     private void registerHiddenFieldFilter(ServletContext aContext) {
         aContext.addFilter("hiddenHttpMethodFilter",
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
     }
-}
+
+
+
+
+
+
+    }

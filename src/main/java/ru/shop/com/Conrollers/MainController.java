@@ -152,6 +152,8 @@ public class MainController {
         Cookie[] cookies = request.getCookies();
         String cookieName = "JWT";
         Cookie cookie = null;
+        response.setCharacterEncoding ("UTF-8");
+        response.setContentType("text/html;charset=Utf-8");
         System.out.println(1234);
 
         if (cookies != null) {
@@ -159,14 +161,14 @@ public class MainController {
                 if (cookieName.equals(c.getName())) {
                     System.out.println(123);
                     cookie = c;
-                    return "redirect:/shop";
+                    return "redirect:/user/profile";
 
                 }
-                return "main/sing_up";
+                return "user/hello";
             }
-            return "main/sing_up";
+            return "user/hello";
         }
-        return "main/sing_up";
+        return "user/hello";
     }
     @PostMapping()
     public String user_new(@ModelAttribute("user") @Valid User user,

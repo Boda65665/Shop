@@ -14,8 +14,11 @@ public class UserMapper implements RowMapper<User> {
         user.setId(resultSet.getInt("id"));
         user.setKodEmailConfimation(resultSet.getInt("kod_email_confimation"));
         user.setEmail(resultSet.getString("email"));
-        user.setLogin("login");
+        user.setLogin(resultSet.getString("login"));
         user.setPassword(resultSet.getString("password"));
+        user.setBalance(resultSet.getDouble("balance"));
+        user.setRating(resultSet.getDouble("rating"));
+        user.setSales(resultSet.getInt("sales"));
         return user;
     }
 }
