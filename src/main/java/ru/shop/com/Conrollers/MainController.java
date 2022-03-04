@@ -149,27 +149,12 @@ public class MainController {
 
     @GetMapping("")
     public String newPerson(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("user") User user) throws MessagingException, IOException {
-        Cookie[] cookies = request.getCookies();
-        String cookieName = "JWT";
-        Cookie cookie = null;
-        response.setCharacterEncoding ("UTF-8");
-        response.setContentType("text/html;charset=Utf-8");
-        System.out.println(1234);
 
-        if (cookies != null) {
-            for (Cookie c : cookies) {
-                if (cookieName.equals(c.getName())) {
-                    System.out.println(123);
-                    cookie = c;
-                    return "redirect:/user/profile";
+                    return (GetDataJWT.getEmail(request,response).equals("None")) ? "main/sing_up" : "redirect:/user/profile";
 
-                }
-                return "user/hello";
-            }
-            return "user/hello";
-        }
-        return "user/hello";
+
     }
+
     @PostMapping()
     public String user_new(@ModelAttribute("user") @Valid User user,
                            BindingResult bindingResult, Model model) {

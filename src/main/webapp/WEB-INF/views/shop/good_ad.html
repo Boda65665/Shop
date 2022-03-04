@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <form th:method="POST" th:action="shop/good_ad" th:object="${good}">
+    <form method="POST" action="good_ad" enctype="multipart/form-data">
         <label for="name">Enter name good: </label>
-
-        <input type="text" th:field="*{name}" id="name"/>
-        <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+        <input type="text"  name = "name" id="name"/>
         <br/>
-        <label for="price">Enter price: </label>
-        <input type="text" th:field="*{price}" id="text"/>
-        <div style="color:red" th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Text Error</div>
+        <label>Enter price: </label>
+        <input type="text" name = "price" id="text"/>
         <br/>
         <label for="img">Enter img: </label>
-        <input type="text" th:field="*{img}" id="img"/>
-        <div style="color:red" th:if="${#fields.hasErrors('img')}" th:errors="*{img}">Img Error</div>
+        <input type="file" name="img" id="file"/>
         <br/>
-        <input type="submit" value="sing in!"/>
+        <label for="description">Enter description: </label>
+        <input type="text" name="description" id="description"/>
+        <br/>
+        <input type="submit" value="add"/>
     </form>
 </head>
 <body>

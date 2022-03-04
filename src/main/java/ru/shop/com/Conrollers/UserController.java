@@ -35,19 +35,7 @@ public class UserController {
 
     @GetMapping("/profile{id}")
     public String prof(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable("id") int id) throws ServletException, IOException {
-        Cookie[] cookies = request.getCookies();
-        String cookieName = "JWT";
-        Cookie cookie = null;
-        System.out.println(1234);
-
-        if (cookies != null) {
-            for (Cookie c : cookies) {
-                if (cookieName.equals(c.getName())) {
-                    System.out.println(123);
-                    cookie = c;
-                    String token = c.getValue();
-                    Claims data = JWT.jwt_open(token).getBody();
-                    String email = (String) data.get("email");
+                    String email = GetDataJWT.getEmail(request,response);
                     User user = UserDAO.user_search(email);
                     System.out.println(email);
                     User user_search = UserDAO.user_search_id(id);
@@ -67,13 +55,8 @@ public class UserController {
 
 
                 }
-            }
 
-            return "redirect:/login";
-        }
-        return "redirect:/login";
-    }
-    @GetMapping("/{id}/goods")
+
     public String goods(){
         return "user/goods";
     }
